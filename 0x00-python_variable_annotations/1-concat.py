@@ -3,5 +3,5 @@
 
 
 def concat(str1: str, str2: str) -> str:
-    """function for adding two numbers"""
+    """function that compute the problem"""
     return str1 + str2

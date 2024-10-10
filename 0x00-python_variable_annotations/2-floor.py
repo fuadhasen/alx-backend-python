@@ -3,5 +3,5 @@
 
 
 def floor(n: float) -> int:
-    """function for adding two numbers"""
+    """function that compute problem"""
     return int(n)
