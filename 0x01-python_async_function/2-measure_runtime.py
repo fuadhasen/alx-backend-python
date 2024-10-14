@@ -14,4 +14,4 @@ def measure_time(n: int, max_delay: int) -> float:
     end = time.time()
 
     total = end - start
-    return total
+    return total / n
