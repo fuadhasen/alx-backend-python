@@ -2,12 +2,11 @@
 """scripts for  Async Generator"""
 import asyncio
 import random
-from typing import AsyncGenerator
+from typing import Generator
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> Generator[float, None, None]:
     """async generator function"""
     for _ in range(10):
         await asyncio.sleep(1)
-        wait_time = random.uniform(0, 10)
-        yield wait_time
+        yield random.uniform(0, 10)
