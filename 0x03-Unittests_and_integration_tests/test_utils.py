@@ -17,8 +17,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, map: Mapping, path: Sequence,
-                               expected: any):
+    def test_access_nested_map(self, map, path,
+                               expected) -> None:
         """test method"""
         res = access_nested_map(map, path)
         self.assertEqual(res, expected)
@@ -27,7 +27,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-    def test_access_nested_map_exception(self, map: Mapping, path: Sequence):
+    def test_access_nested_map_exception(self, map, path):
         """test method for exception"""
         with self.assertRaises(KeyError) as ctx:
             access_nested_map(map, path)
@@ -40,7 +40,7 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False}),
     ])
     @mock.patch('requests.get')
-    def test_get_json(self, url: str, payload: dict, mock_requests: any):
+    def test_get_json(self, url, payload, mock_requests):
         """testing get_json method"""
         mocke_response = MagicMock()
         mocke_response.json.return_value = payload
