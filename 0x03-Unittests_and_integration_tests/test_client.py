@@ -22,11 +22,11 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self):
         """mock property attributes"""
-        with patch.object(GithubOrgClient, '_public_repos_url',
-                          new_callable=PropertyMock) as mock_org:
-            mock_org.return_value = {'repos_url': 'value'}
-            res = GithubOrgClient._public_repos_url
-            self.assertEqual(res, {'repos_url': 'value'})
+        with patch.object(GithubOrgClient, 'org') as mock_org:
+            mock_org.__getitem__.return_value = {'repos_url': 'value'}
+            obj = GithubOrgClient('google')
+            res = obj._public_repos_url
+            self.assertEqual(res,  {'repos_url': 'value'})
 
     # @patch('utils.get_json')
     # def test_public_repos(self, mock_get_json):
@@ -40,6 +40,7 @@ class TestGithubOrgClient(unittest.TestCase):
     #         mock_public.assert_called_once()
     #     mock_get_json.assert_called_once()
 
+    # Task 7
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
         ({"license": {"key": "other_license"}}, "my_license", False)
