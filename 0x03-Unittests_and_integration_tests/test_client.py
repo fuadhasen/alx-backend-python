@@ -39,10 +39,10 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch.object(GithubOrgClient, '_public_repos_url',
                           new_callable=PropertyMock) as mock_public_url:
             mock_public_url.return_value = 'url'
-            res = GithubOrgClient('google')
-            _list = res.public_repos(self)
+            obj = GithubOrgClient('google')
+            _list = obj.public_repos()
 
-            self.assertEqual(_list, [])
+            self.assertEqual(_list, ['@hasfuad', '@halafula'])
             mock_public_url.assert_called_once()
         mock_get_json.assert_called_once()
 
@@ -55,3 +55,5 @@ class TestGithubOrgClient(unittest.TestCase):
         """parameterized testing"""
         res = GithubOrgClient.has_license(arg1, arg2)
         self.assertEqual(res, expected)
+
+    # Task 8
